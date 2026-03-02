@@ -1,4 +1,4 @@
-from src.models import abmil, transmil, transformer, ilra, dftd, clam, rrt, wikg, dsmil
+from models import abmil, transmil, transformer, ilra, dftd, clam, rrt, wikg, dsmil
 import pathlib
 import os
 REPO_PATH = str(pathlib.Path(__file__).parent.resolve())  # absolute path to repo root

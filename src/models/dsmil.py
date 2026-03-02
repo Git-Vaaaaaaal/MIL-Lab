@@ -8,8 +8,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 from transformers import PretrainedConfig, PreTrainedModel, AutoConfig, AutoModel
 
-from src.models.mil_template import MIL
-from src.models.layers import create_mlp
+from models.mil_template import MIL
+from models.layers import create_mlp
 
 
 # --- Core Model Components ---

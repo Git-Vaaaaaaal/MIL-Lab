@@ -166,3 +166,8 @@ src/misc
 .vscode
 src/debug
 core.*
+
+
+
+#token private files
+token.txt

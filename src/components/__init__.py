@@ -1,1 +1,1 @@
-from src.models.layers import create_mlp
+from models.layers import create_mlp

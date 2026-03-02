@@ -6,8 +6,8 @@ import numpy as np
 import pdb
 from dataclasses import dataclass
 
-from src.models.mil_template import MIL
-from src.models.layers import GlobalGatedAttention, GlobalAttention, create_mlp
+from models.mil_template import MIL
+from models.layers import GlobalGatedAttention, GlobalAttention, create_mlp
 from transformers import PretrainedConfig, PreTrainedModel, AutoModel, AutoConfig
 
 # Define the core CLAMSB model

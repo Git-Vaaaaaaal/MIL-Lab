@@ -10,13 +10,13 @@ import torch
 import random
 #from utils import get_cam_1d
 #import torch.nn.functional as F
-from src.models.layers import create_mlp, GlobalGatedAttention
-from src.models.abmil import ABMIL
-from src.models.mil_template import MIL
+from models.layers import create_mlp, GlobalGatedAttention
+from models.abmil import ABMIL
+from models.mil_template import MIL
 #from utils import eval_metric
 from dataclasses import dataclass
 
-from src.builder_utils import _cfg, build_model_with_cfg
+from builder_utils import _cfg, build_model_with_cfg
 _model_default_cfgs = {
     'default': _cfg(),
 }

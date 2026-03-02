@@ -4,8 +4,10 @@ import os
 import torch
 from typing import Any, Callable, Dict, List, Optional, Tuple, Union
 from transformers import AutoModel, AutoConfig
+from torch.utils.data import Dataset
 from loguru import logger
 from torch import nn
+import pandas as pd
 try:
     import safetensors.torch
     _has_safetensors = True
@@ -398,3 +400,25 @@ def build_model_with_cfg(
 
     return model
 
+
+#import features and labels class
+class MILDataset(Dataset):
+    def __init__(self, dataset_path):
+        self.dataset_path = dataset_path
+        self.labels_df = pd.read_csv(os.path.join(dataset_path, "labels.csv"))
+        
+    def __len__(self):
+        return len(self.labels_df)
+    
+    def __getitem__(self, idx):
+        row = self.labels_df.iloc[idx]
+        
+        slide_name = row["slide_name"]
+        label = row["label"]
+        
+        features_path = os.path.join(self.dataset_path, f"{slide_name}.pt")
+        data = torch.load(features_path)
+        
+        features = data["features"]   # (N, 768)
+        
+        return features, torch.tensor(label, dtype=torch.long)

@@ -2,7 +2,7 @@ import torch
 from transformers import PretrainedConfig, PreTrainedModel, AutoConfig, AutoModel
 import torch.nn as nn
 import torch.nn.functional as F
-from src.models.mil_template import MIL
+from models.mil_template import MIL
 
 
 """

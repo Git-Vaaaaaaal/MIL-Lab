@@ -5,10 +5,10 @@ import torch.nn.functional as F
 import pathlib
 from dataclasses import dataclass
 
-from src.models.layers import create_mlp
+from models.layers import create_mlp
 from torch_geometric.nn import global_mean_pool, global_max_pool
 from torch_geometric.nn import GlobalAttention as GeoGlobalAttention
-from src.models.mil_template import MIL
+from models.mil_template import MIL
 
 from transformers import PretrainedConfig, PreTrainedModel, AutoConfig, AutoModel
 

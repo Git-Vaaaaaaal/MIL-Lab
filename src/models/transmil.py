@@ -2,9 +2,9 @@ import torch
 import torch.nn as nn
 import numpy as np
 from nystrom_attention import NystromAttention
-from src.models.layers import create_mlp
+from models.layers import create_mlp
 from transformers import PreTrainedModel, PretrainedConfig, AutoModel, AutoConfig
-from src.models.mil_template import MIL
+from models.mil_template import MIL
 
 class TransLayer(nn.Module):
     def __init__(self, norm_layer: nn.Module = nn.LayerNorm, dim: int = 512, num_heads: int = 8):
