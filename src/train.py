@@ -7,6 +7,11 @@ from builder import create_model
 from function import train_model
 
 import os
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--path", required=True,help="Chemin vers le fichier ou dossier")
+parser.parse_args()
 
 #Variable
 dataset_path = "features"
