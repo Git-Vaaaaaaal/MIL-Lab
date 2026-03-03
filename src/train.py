@@ -42,4 +42,4 @@ for dataset in features_list:
                 from_pretrained=False
             )
             
-            train_model(model, dataset_path, device, epochs, str(model_names), output_path)
+            train_model(model, dataset, device, epochs, str(model_names), output_path)
