@@ -32,10 +32,20 @@ output_path = os.path.join(os.getcwd(), output_path)
 #"abmil.base.uni.pc108-24k", 
 
 
-for dataset in features_list: 
-    for model_name in model_names:
-            print(f"\n--- Training model: {model_name} ---")
+for feature in features_list: 
+    print(f"\n--- Training model: {model_name} ---")
             
+    feature_path = os.path.join(dataset_path, feature)
+
+    dataset = MILDataset(
+        data_dir=feature_path,
+        csv_path=csv_path,
+        label_col="status"
+        )
+    
+    for model_name in model_names:
+            
+
             model = create_model(
                 model_name=model_name,
                 num_classes=2,
