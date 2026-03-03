@@ -416,9 +416,12 @@ class MILDataset(Dataset):
         row = self.labels_df.iloc[idx]
         
         slide_name = row[self.name_col]
+        slide_name = str(slide_name)
         label = row[self.label_col]
-        print(f"self name column : {self.name_col}")
+
         print(f"slide name : {slide_name}")
+        print(f"type slide name : {type(slide_name)}")
+        
         if slide_name.endswith('.0'):
             slide_name = slide_name[:-2]
 
