@@ -229,3 +229,13 @@ If you find our work useful in your research, please cite our paper:
 
 
 <img src="_readme/joint_logo.png"> 
+
+
+
+# venv ccub
+module load python
+python3 -m venv .venv
+source .venv/bin/activate
+pip3 install --prefix=/beegfs/data/work/c-2iia/vb710264/mil_lab/milab_venv -r requirements.txt
+export PYTHONPATH=/beegfs/data/work/c-2iia/vb710264/mil_lab/milab_venv/lib/python3.9/site-packages:$PYTHONPATH
+pip3 list

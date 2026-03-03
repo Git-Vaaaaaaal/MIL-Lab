@@ -16,13 +16,13 @@ parser.add_argument("output_path", type=str)
 args = parser.parse_args() """
 
 #Variable
-dataset_path = "features"
+dataset_path = "src/features"
 print("Working directory:", os.getcwd())
-csv_path = "clinical_data.csv"
+csv_path = "src/clinical_data.csv"
 features_list = os.listdir(dataset_path)
 model_names = ["abmil", "clam", "dsmil", "transmil", "dftd", "ilra", "rrt", "wikg", "transformer"]
 
-output_path = "output"
+output_path = "src/output"
 output_path = os.path.join(os.getcwd(), output_path)
 
 

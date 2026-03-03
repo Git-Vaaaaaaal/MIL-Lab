@@ -171,3 +171,4 @@ core.*
 
 #token private files
 token.txt
+.venv

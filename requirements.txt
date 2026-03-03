@@ -18,3 +18,5 @@ future
 omegaconf
 loguru
 torch_geometric
+matplotlib
+seaborn
