@@ -89,6 +89,8 @@ def train_model(model, dataset, device="cuda", epochs=80, model_name="model", ou
         all_probs = []
         all_labels = []
         
+        print(len(train_loader))
+
         for features, label in train_loader:
             
             features = features.to(device)
