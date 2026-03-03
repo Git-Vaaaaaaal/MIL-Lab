@@ -10,17 +10,19 @@ import os
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--path", required=True,help="Chemin vers le fichier ou dossier")
-parser.parse_args()
+parser.add_argument("dataset_path", type=str)
+parser.add_argument("csv_file", type=str)
+parser.add_argument("output_path", type=str)
+args = parser.parse_args()
 
 #Variable
-dataset_path = "features"
+dataset_path = args.dataset_path
 print("Working directory:", os.getcwd())
-csv_path = "clinical_data.csv"
+csv_path = args.csv_file
 features_list = os.listdir(dataset_path)
 model_names = ["abmil", "clam", "dsmil", "transmil", "dftd", "ilra", "rrt", "wikg", "transformer"]
 
-output_path = "results"
+output_path = args.output_path
 output_path = os.path.join(os.getcwd(), output_path)
 
 
