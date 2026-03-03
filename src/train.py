@@ -7,22 +7,22 @@ from builder import create_model
 from function import train_model
 
 import os
-import argparse
+""" import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument("dataset_path", type=str)
 parser.add_argument("csv_file", type=str)
 parser.add_argument("output_path", type=str)
-args = parser.parse_args()
+args = parser.parse_args() """
 
 #Variable
-dataset_path = args.dataset_path
+dataset_path = "features"
 print("Working directory:", os.getcwd())
-csv_path = args.csv_file
+csv_path = "clinical_data.csv"
 features_list = os.listdir(dataset_path)
 model_names = ["abmil", "clam", "dsmil", "transmil", "dftd", "ilra", "rrt", "wikg", "transformer"]
 
-output_path = args.output_path
+output_path = "output"
 output_path = os.path.join(os.getcwd(), output_path)
 
 
