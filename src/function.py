@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 import matplotlib.pyplot as plt
 from torch.utils.data import DataLoader, random_split
+from builder_utils import MILDataset
 from sklearn.metrics import roc_auc_score
 import torch
 import numpy as np
@@ -67,9 +68,11 @@ def train_model(model, dataset, device="cuda", epochs=80, model_name="model", ou
     print(f"Sample features shape: {sample_features.shape if hasattr(sample_features, 'shape') else type(sample_features)}")
     print(f"Sample label: {sample_label}")
 
+    train_loader = MILDataset(train_dataset)
+    val_loader = MILDataset(val_dataset)
 
-    train_loader = DataLoader(train_dataset, batch_size=1, shuffle=True)
-    val_loader = DataLoader(val_dataset, batch_size=1, shuffle=False)
+    #train_loader = DataLoader(train_dataset, batch_size=1, shuffle=True)
+    #val_loader = DataLoader(val_dataset, batch_size=1, shuffle=False)
     
     model = model.to(device)
     
