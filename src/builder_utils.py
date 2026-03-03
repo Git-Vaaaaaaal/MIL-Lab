@@ -403,9 +403,11 @@ def build_model_with_cfg(
 
 #import features and labels class
 class MILDataset(Dataset):
-    def __init__(self, dataset_path):
+    def __init__(self, dataset_path, labels_df, label_col="status", name_col="patient+AF8-id"):
         self.dataset_path = dataset_path
-        self.labels_df = pd.read_csv(os.path.join(dataset_path, "labels.csv"))
+        self.labels_df = pd.read_csv(labels_df)
+        self.label_col = label_col
+        self.name_col = name_col
         
     def __len__(self):
         return len(self.labels_df)
@@ -413,8 +415,8 @@ class MILDataset(Dataset):
     def __getitem__(self, idx):
         row = self.labels_df.iloc[idx]
         
-        slide_name = row["slide_name"]
-        label = row["label"]
+        slide_name = row[self.name_col]
+        label = row[self.label_col]
         
         features_path = os.path.join(self.dataset_path, f"{slide_name}.pt")
         data = torch.load(features_path)

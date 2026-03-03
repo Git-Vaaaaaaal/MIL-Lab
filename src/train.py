@@ -37,9 +37,10 @@ for feature in features_list:
     feature_path = os.path.join(dataset_path, feature)
 
     dataset = MILDataset(
-        data_dir=feature_path,
-        csv_path=csv_path,
-        label_col="status"
+        dataset_path=feature_path,
+        labels_df=csv_path,
+        label_col="status",
+        name_col="patient+AF8-id"
         )
     
     for model_name in model_names:
