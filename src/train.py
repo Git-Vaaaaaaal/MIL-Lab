@@ -21,6 +21,7 @@ print("Working directory:", os.getcwd())
 csv_path = "src/clinical_data.csv"
 features_list = os.listdir(dataset_path)
 model_names = ["abmil", "clam", "dsmil", "transmil", "dftd", "ilra", "rrt", "wikg", "transformer"]
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 output_path = "src/output"
 output_path = os.path.join(os.getcwd(), output_path)
@@ -40,4 +41,4 @@ for dataset in features_list:
                 from_pretrained=False
             )
             
-            train_model(model, dataset_path, str(model_names), output_path)
+            train_model(model, dataset_path, device, str(model_names), output_path)
