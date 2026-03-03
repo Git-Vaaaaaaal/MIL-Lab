@@ -33,8 +33,7 @@ output_path = os.path.join(os.getcwd(), output_path)
 
 
 for feature in features_list: 
-    print(f"\n--- Training model: {model_name} ---")
-            
+
     feature_path = os.path.join(dataset_path, feature)
 
     dataset = MILDataset(
@@ -45,6 +44,7 @@ for feature in features_list:
     
     for model_name in model_names:
             
+            print(f"\n--- Training model: {model_name} ---")
 
             model = create_model(
                 model_name=model_name,
