@@ -68,12 +68,12 @@ def train_model(model, dataset, device="cuda", epochs=80, model_name="model", ou
     print(f"Sample features shape: {sample_features.shape if hasattr(sample_features, 'shape') else type(sample_features)}")
     print(f"Sample label: {sample_label}")
 
+    # train_loader = DataLoader(train_dataset, batch_size=1, shuffle=True)
+    # val_loader = DataLoader(val_dataset, batch_size=1, shuffle=False)
+    
     train_loader = MILDataset(train_dataset)
     val_loader = MILDataset(val_dataset)
 
-    #train_loader = DataLoader(train_dataset, batch_size=1, shuffle=True)
-    #val_loader = DataLoader(val_dataset, batch_size=1, shuffle=False)
-    
     model = model.to(device)
     
     criterion = nn.CrossEntropyLoss()
