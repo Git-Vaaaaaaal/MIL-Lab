@@ -1,4 +1,4 @@
-wandb
+wandb==0.16.3
 transformers==4.53.1
 numpy<2
 timm>=0.9.2
@@ -6,10 +6,10 @@ torch>=2.0.0
 torchvision
 h5py
 opencv-python
-pandas
+pandas==2.3.2
 PyYAML
 scikit-image
-scikit-learn
+scikit-learn==1.5.2
 scipy
 tqdm
 scikit-survival
