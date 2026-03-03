@@ -417,7 +417,11 @@ class MILDataset(Dataset):
         
         slide_name = row[self.name_col]
         label = row[self.label_col]
-        
+        print(f"self name column : {self.name_col}")
+        print(f"slide name : {slide_name}")
+        if slide_name.endswith('.0'):
+            slide_name = slide_name[:-2]
+
         features_path = os.path.join(self.dataset_path, f"{slide_name}.pt")
         data = torch.load(features_path)
         
