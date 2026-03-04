@@ -408,30 +408,38 @@ class MILDataset(Dataset):
         self.labels_df = pd.read_csv(labels_df)
         self.label_col = label_col
         self.name_col = name_col
-        
+
+        # 🔹 Filtrage des lignes dont le .pt n'existe pas
+        valid_rows = []
+        for _, row in self.labels_df.iterrows():
+            slide_name = str(row[self.name_col])
+
+            if slide_name.endswith(".0"):
+                slide_name = slide_name[:-2]
+
+            features_path = os.path.join(self.dataset_path, f"{slide_name}.pt")
+
+            if os.path.exists(features_path):
+                valid_rows.append(row)
+
+        self.labels_df = pd.DataFrame(valid_rows).reset_index(drop=True)
+
+        print(f"Dataset filtré : {len(self.labels_df)} échantillons valides")
+
     def __len__(self):
         return len(self.labels_df)
-    
+
     def __getitem__(self, idx):
         row = self.labels_df.iloc[idx]
-        
-        slide_name = row[self.name_col]
-        slide_name = str(slide_name)
-        label = row[self.label_col]
 
-        print(f"slide name : {slide_name}")
-        print(f"type slide name : {type(slide_name)}")
-        
-        if slide_name.endswith('.0'):
+        slide_name = str(row[self.name_col])
+        if slide_name.endswith(".0"):
             slide_name = slide_name[:-2]
 
+        label = row[self.label_col]
         features_path = os.path.join(self.dataset_path, f"{slide_name}.pt")
 
-        if not os.path.exists(features_path): 
-            return None
-
         data = torch.load(features_path)
-        
         features = data["features"]   # (N, 768)
-        
+
         return features, torch.tensor(label, dtype=torch.long)
