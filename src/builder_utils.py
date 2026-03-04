@@ -426,6 +426,8 @@ class MILDataset(Dataset):
             slide_name = slide_name[:-2]
 
         features_path = os.path.join(self.dataset_path, f"{slide_name}.pt")
+
+        if not os.path.exists(features_path): return None
         data = torch.load(features_path)
         
         features = data["features"]   # (N, 768)
