@@ -16,7 +16,7 @@ parser.add_argument("output_path", type=str)
 args = parser.parse_args() """
 
 #Variable
-dataset_path = "src/features"
+dataset_path = "src/features_tma_1024"
 print("Working directory:", os.getcwd())
 csv_path = "src/clinical_data.csv"
 features_list = os.listdir(dataset_path)
